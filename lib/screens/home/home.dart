@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_brew_crew/models/brew.dart';
 import 'package:flutter_brew_crew/screens/home/brew_list.dart';
+import 'package:flutter_brew_crew/screens/home/settings_form.dart';
 import 'package:flutter_brew_crew/services/auth_service.dart';
 import 'package:flutter_brew_crew/services/database_service.dart';
 import 'package:provider/provider.dart';
@@ -11,6 +12,16 @@ class Home extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+
+    void _showSettingsPanel() {
+      showModalBottomSheet(context: context, builder: (context) {
+        return Container(
+          padding: EdgeInsets.symmetric(vertical: 20, horizontal: 60),
+          child: SettinsForm(),
+        );
+      });
+    }
+
     return StreamProvider<List<Brew>>.value(
       value: DatabaseService().brews,
       child: Scaffold(
@@ -26,6 +37,11 @@ class Home extends StatelessWidget {
               onPressed: () async {
                 await _auth.signOut();
               },
+            ),
+            FlatButton.icon(
+              icon: Icon(Icons.settings),
+              label: Text('settings'),
+              onPressed: () => _showSettingsPanel(),
             )
           ],
         ),
