@@ -39,7 +39,6 @@ class DatabaseService {
     );
   }
 
-
   // get brwes stream
   Stream<List<Brew>> get brews {
     return brewCollection.snapshots().map(_brewListFromSnapshot);
