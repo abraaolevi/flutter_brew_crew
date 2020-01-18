@@ -79,7 +79,14 @@ class _SettinsFormState extends State<SettinsForm> {
                   style: TextStyle(color: Colors.white),
                 ),
                 onPressed: () async {
-
+                  if (_formKey.currentState.validate()) {
+                    await DatabaseService(uid: user.uid).updateUserData(
+                      _currentSugars ?? userData.sugars,
+                      _currentName ?? userData.name,
+                      _currentStrength ?? userData.strength
+                    );
+                    Navigator.pop(context);
+                  }
                 },
               )
             ],
