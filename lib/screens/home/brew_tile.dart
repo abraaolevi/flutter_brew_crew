@@ -12,7 +12,7 @@ final Brew brew;
     return Padding(
       padding: EdgeInsets.only(top: 8),
       child: Card(
-        margin: EdgeInsets.fromLTRB(20, 6, 02, 0),
+        margin: EdgeInsets.fromLTRB(20, 6, 20, 0),
         child: ListTile(
           leading: CircleAvatar(
             radius: 25,
